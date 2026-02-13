@@ -251,20 +251,18 @@ display:none;
 }
 
 .memories-title{
-position:fixed;
-top:20px;
-left:50%;
-transform:translateX(-50%);
-font-size:clamp(1.5rem,4vw,2.2rem);
-color:#ff4d6d;
-z-index:200;
-text-align:center;
+  font-size:clamp(1.5rem,4vw,2.2rem);
+  color:#ff4d6d;
+  text-align:center;
+  margin-top:40px;
 }
+
 
 .memories-gallery{
 height:100vh;
 overflow-y:scroll;
 scroll-snap-type:y mandatory;
+padding: auto;
 }
 
 .memory{
