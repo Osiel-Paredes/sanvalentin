@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nuestros Recuerdos 💕</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="memories-page">
+    <h1 class="memories-title">Nuestros Recuerdos ✨</h1>
+
+    <div class="memories-gallery">
+      <div class="memory">
+        <img src="imagenes/foto9.jpeg" />
+        <p>El día que entendí que contigo todo se sentía más tranquilo.</p>
+      </div>
+
+      <div class="memory">
+        <img src="imagenes/foto8.jpeg" />
+        <p>Esa mirada tuya que siempre logra desarmarme.</p>
+      </div>
+
+      <div class="memory">
+        <img src="imagenes/foto7.jpeg" />
+        <p>Momentos simples que sin darme cuenta se volvieron importantes.</p>
+      </div>
+
+      <div class="memory">
+        <img src="imagenes/foto6.jpeg" />
+        <p>Desde que llegaste, las cosas pequeñas empezaron a significar más.</p>
+      </div>
+
+      <div class="memory">
+        <img src="imagenes/foto10.jpeg" />
+        <p>A tu lado incluso los días normales se sienten distintos.</p>
+      </div>
+
+      <div class="memory">
+        <img src="imagenes/foto11.jpeg" />
+        <p>Hay algo en tu forma de ser que siempre me da calma.</p>
+      </div>
+
+      <div class="memory">
+        <img src="imagenes/foto12.jpeg" />
+        <p>Contigo he aprendido a disfrutar el presente sin pensar tanto en lo demás.</p>
+      </div>
+
+      <div class="memory">
+        <img src="imagenes/foto5.jpeg" />
+        <p>No sabía que alguien pudiera hacerme sentir tan cómodo siendo yo.</p>
+      </div>
+
+      <div class="memory">
+        <img src="imagenes/foto3.jpeg" />
+        <p>Tu compañía se volvió uno de mis lugares favoritos.</p>
+      </div>
+
+      <div class="memory">
+        <img src="imagenes/foto2.jpeg" />
+        <p>Y apenas estamos empezando a escribir nuestra historia.</p>
+      </div>
+    </div>
+
+    <button class="back-btn" onclick="goBack()">Volver a la carta 💌</button>
+
+    <div class="hearts" id="hearts"></div>
+
+    <script>
+      function goBack() {
+        window.location.href = 'index.html'
+      }
+
+      const heartsContainer = document.getElementById('hearts')
+
+      setInterval(() => {
+        const heart = document.createElement('span')
+        heart.innerHTML = '❤️'
+        heart.style.left = Math.random() * 100 + 'vw'
+        heart.style.fontSize = Math.random() * 15 + 10 + 'px'
+        heart.style.animationDuration = Math.random() * 3 + 4 + 's'
+        heartsContainer.appendChild(heart)
+
+        setTimeout(() => {
+          heart.remove()
+        }, 7000)
+      }, 400)
+    </script>
+  </body>
+</html>

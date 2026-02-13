@@ -1,68 +1,69 @@
-const slides = document.querySelectorAll('.slide')
-const nextBtn = document.getElementById('nextBtn')
-const progressBar = document.getElementById('progressBar')
-const yesBtn = document.getElementById('yesBtn')
-const noBtn = document.getElementById('noBtn')
-const result = document.getElementById('result')
-const heartsContainer = document.querySelector('.hearts')
-const celebration = document.getElementById('celebration')
+document.addEventListener("DOMContentLoaded", function(){
 
-let current = 0
+const scene = document.getElementById("scene");
+const envelope = document.getElementById("envelope");
+const letter = document.getElementById("letter");
+const typeText = document.getElementById("typeText");
+const finalMessage = document.getElementById("finalMessage");
+const music = document.getElementById("bgMusic");
+const petals = document.getElementById("petals");
 
-function updateSlide() {
-  slides.forEach(s => s.classList.remove('active'))
-  slides[current].classList.add('active')
-  progressBar.style.width = ((current + 1) / slides.length) * 100 + '%'
-  if (current === slides.length - 1) nextBtn.style.display = 'none'
+const text = `Te conocí en un momento en el que ni siquiera sabía bien qué quería.
+No estaba buscando cambiar… pero llegaste tú.
+
+Admiro tu corazón.
+Tu forma tan noble de ver la vida.
+
+Contigo he aprendido a ser mejor persona.
+Más empático. Más consciente.
+
+Desde que estás conmigo,
+me siento más feliz.
+
+Gracias por ser tú, por compartir tu tiempo conmigo, por hacerme sentir tan especial.
+
+Te amo.`;
+
+setTimeout(()=>{
+scene.classList.remove("hidden");
+},2000);
+
+envelope.addEventListener("click",()=>{
+
+envelope.classList.add("open");
+
+setTimeout(()=>{
+envelope.style.display="none";
+letter.classList.remove("hidden");
+music.play().catch(()=>{});
+revealText();
+createPetals();
+},600);
+
+});
+
+function revealText(){
+typeText.innerHTML = text.replace(/\n/g, "<br>");
+
+setTimeout(()=>{
+typeText.classList.add("show-text");
+},200);
 }
 
-nextBtn.addEventListener('click', () => {
-  if (current < slides.length - 1) {
-    current++
-    updateSlide()
-  }
-})
-
-updateSlide()
-
-// NO huye 😈
-noBtn.addEventListener('mouseover', () => {
-  const x = Math.random() * (window.innerWidth - noBtn.clientWidth)
-  const y = Math.random() * (window.innerHeight - noBtn.clientHeight)
-  noBtn.style.position = 'absolute'
-  noBtn.style.left = x + 'px'
-  noBtn.style.top = y + 'px'
-})
-
-// SÍ con celebración 🎉😂
-yesBtn.addEventListener('click', () => {
-  result.classList.remove('hidden')
-  yesBtn.style.display = 'none'
-  noBtn.style.display = 'none'
-  launchCelebration()
-})
-
-// Corazones normales
-function createHeart() {
-  const heart = document.createElement('span')
-  heart.innerHTML = '💖'
-  heart.style.left = Math.random() * 100 + 'vw'
-  heart.style.fontSize = Math.random() * 20 + 15 + 'px'
-  heart.style.animationDuration = Math.random() * 3 + 3 + 's'
-  heartsContainer.appendChild(heart)
-  setTimeout(() => heart.remove(), 6000)
+function createPetals(){
+setInterval(()=>{
+const petal=document.createElement("span");
+petal.innerHTML="🌸";
+petal.style.left=Math.random()*100+"vw";
+petal.style.animationDuration=(Math.random()*3+3)+"s";
+petals.appendChild(petal);
+setTimeout(()=>petal.remove(),6000);
+},300);
 }
-setInterval(createHeart, 300)
 
-// Celebración cagada 😂💘
-function launchCelebration() {
-  celebration.classList.remove('hidden')
-  for (let i = 0; i < 40; i++) {
-    const emoji = document.createElement('span')
-    emoji.innerHTML = ['💖','😍','🥰','🎉','💘'][Math.floor(Math.random()*5)]
-    emoji.style.left = Math.random() * 100 + 'vw'
-    emoji.style.animationDelay = Math.random() + 's'
-    celebration.appendChild(emoji)
-    setTimeout(() => emoji.remove(), 2000)
-  }
+});
+
+
+function goToMemories(){
+  window.location.href = "recuerdos.html";
 }
